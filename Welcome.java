@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -21,24 +22,17 @@ public class Welcome extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
 					Welcome frame = new Welcome();
 					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Welcome() {
-		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//Object userid;
+		//this.userid = userid;  // Local Userid is set to this.userid (Instance Variable)
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -46,47 +40,47 @@ public class Welcome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Welcome");
-		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(328, 127, 102, 25);
-		contentPane.add(lblNewLabel);
+		JLabel msg = new JLabel("Welcome");
+		msg.setForeground(Color.RED);
+		msg.setHorizontalAlignment(SwingConstants.CENTER);
+		msg.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		msg.setBounds(56, 69, 153, 43);
+		contentPane.add(msg);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 137, 26);
-		contentPane.add(menuBar);
+		this.setJMenuBar(menuBar);  // add menubar in frame
 		
 		JMenu mnFile = new JMenu("File");
-		mnFile.setFont(new Font("Segoe UI", Font.BOLD, 18));
-		menuBar.add(mnFile);
+		menuBar.add(mnFile); // add menu in menubar
 		
-		JMenuItem mntmGameOne = new JMenuItem("Game One");
-		mntmGameOne.addActionListener(new ActionListener() {
+		JMenuItem mntmGame = new JMenuItem("Game 1");
+		mntmGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				startGameOne();
 			}
 
-			private void startGameOne() {
-				// TODO Auto-generated method stub
-				GameOne gameOne=new GameOne();
-				gameOne.setVisible(true);
+			private void startGameOne(){
+				Welcome.this.setVisible(false);
+				GameOne gameone=new GameOne();
+				gameone.setVisible(true);
 			}
 		});
-		mntmGameOne.setBounds(0, 26, 137, 24);
-		contentPane.add(mntmGameOne);
+		mnFile.add(mntmGame); // add menuitem in menu
 		
-		JMenuItem mntmGameTwo = new JMenuItem("Game Two");
-		mntmGameTwo.addActionListener(new ActionListener() {
+		JMenuItem mntmGame_1 = new JMenuItem("Game 2");
+		mntmGame_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			startGameTwo();
-			}
-
-			private void startGameTwo() {
-				// TODO Auto-generated method stub
-				
 			}
 		});
-		mntmGameTwo.setBounds(0, 47, 151, 24);
-		contentPane.add(mntmGameTwo);
+		mnFile.add(mntmGame_1);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
+		
+		JMenuBar menuBar_1 = new JMenuBar();
+		menuBar.add(menuBar_1);
+		//menuBar.setBounds(90, 146, 132, 22);
+		//contentPane.add(menuBar);
+
 	}
 }

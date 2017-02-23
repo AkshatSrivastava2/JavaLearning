@@ -6,6 +6,10 @@ public class stringReplace {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter String");
 		String s=sc.nextLine();
-		System.out.println(s.replace('a','@'));		
+		//sc.nextLine();
+		System.out.println("Enter Replaced String ");
+		String replaced=sc.nextLine();
+		System.out.println(s.replaceAll(replaced, ""));
+	//	for()
 	}
 }

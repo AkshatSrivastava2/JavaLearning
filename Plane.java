@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
-class Plane{
+public class Plane {
 	private int x;
 	private int y;
 	private Image image;
@@ -13,44 +13,62 @@ class Plane{
 	private boolean isVisible;
 	private int velX;
 	private int velY;
+	
 	public Rectangle getRectangle(){
-		Rectangle r=new Rectangle(x,y,width,height);
+		Rectangle r = new Rectangle(x,y,width,height);
 		return r;
-		
 	}
-	public Plane(){
-		x=500;
-		y=500;
-		image=new ImageIcon(Plane.class.getResource("helicopter.gif")).getImage();
-		width=image.getWidth(null);
-		height=image.getHeight(null);
-		isVisible=true;
-		
-	}
-	public void move(){
-		x=x+velX;
-		y+=velY;
-	}
+	
 	public void dontMove(){
-		velX=0;
-		velY=0;
+		velX = 0;
+		velY = 0;
 	}
-	public void direction(KeyEvent e)
-	{
-		if(e.getKeyCode()==KeyEvent.VK_UP){
+	public void direction(KeyEvent e){
+		
+		
+		if(e.getKeyCode() == KeyEvent.VK_UP){
 			velY=-1;
-			
 		}
-		else if(e.getKeyCode()==KeyEvent.VK_DOWN){
+		
+		else
+		if(e.getKeyCode() == KeyEvent.VK_DOWN){	
 			velY=1;
 		}
-		else if(e.getKeyCode()==KeyEvent.VK_RIGHT)
-		{
-			velX=1;
+		else
+		if(e.getKeyCode()==KeyEvent.VK_LEFT){
+			if(x==50){
+				velX = 0;
+			}
+			else{
+			velX = -1;
+			}
+			}
+		else
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+			if(x ==GameOne.BOARD_WIDTH-200){
+				velX =0;
+			}
+			else{
+			velX = 1;
+			}
 		}
-		else if(e.getKeyCode()==KeyEvent.VK_LEFT){
-			velX=-1;
-		}
+		 
+	}
+	public void move(){
+		x = x + velX;
+		y = y + velY;
+		
+	}
+	
+	Plane(){
+		x = 50;
+		y = 100;
+		 image = 
+				new ImageIcon
+				(Plane.class.getResource("helicopter.gif")).getImage();
+		 width = image.getWidth(null);
+		 height = image.getHeight(null);
+		 isVisible = true;
 	}
 	public int getX() {
 		return x;
@@ -63,12 +81,6 @@ class Plane{
 	}
 	public void setY(int y) {
 		this.y = y;
-	}
-	public boolean isVisible() {
-		return isVisible;
-	}
-	public void setVisible(boolean isVisible) {
-		this.isVisible = isVisible;
 	}
 	public Image getImage() {
 		return image;
@@ -85,4 +97,15 @@ class Plane{
 	public int getHeight() {
 		return height;
 	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public boolean isVisible() {
+		return isVisible;
+	}
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
+	}
+	
+	
 }

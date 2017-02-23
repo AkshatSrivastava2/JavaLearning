@@ -12,8 +12,8 @@ public class GameOne extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	static final int BOARD_WIDTH=500;
-	static final int BOARD_HEIGHT=500;
+	static final int BOARD_WIDTH=1500;
+	static final int BOARD_HEIGHT=1500;
 	
 	public static void main(String[] args) {
 		
@@ -50,8 +50,10 @@ public class GameOne extends JFrame {
 		this.setLocationRelativeTo(null);
 		//setBounds(100, 100, 450, 300);
 		this.getContentPane().setLayout(null);
+		Board board=new Board();
+		this.getContentPane().add(board);
+	}
 		
 		
 	}
 
-}
